@@ -1,0 +1,32 @@
+{
+  "manifest_version": 3,
+  "name": "CSS2USE",
+  "version": "2.1",
+  "description": "Inspecione, edite e exporte componentes web responsivos.",
+  "permissions": ["activeTab", "scripting", "storage"],
+  "icons": {
+    "16": "icon16.png",
+    "48": "icon48.png",
+    "128": "icon128.png"
+  },
+  "action": {
+    "default_title": "Ativar CSS2USE",
+    "default_icon": "icon48.png"
+  },
+  "background": {
+    "service_worker": "src/background/index.ts",
+    "type": "module"
+  },
+  "content_scripts": [
+    {
+      "matches": ["http://*/*", "https://*/*", "<all_urls>"],
+      "js": ["src/content/index.tsx"]
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": ["icon.png"],
+      "matches": ["<all_urls>"]
+    }
+  ]
+}
